@@ -15,7 +15,7 @@ ini_set('session.gc_maxlifetime', 1440);
 
 
 $db = new $sql_db();
-$db->sql_connect($dbserv, $dbuser, $dbpass, $dbname);
+$db->sql_connect($dbserv, $dbuser, $dbpass, $dbname, $dbport);
 $template = new template();
 $template->set_template();
 $config = new config();

@@ -3,8 +3,9 @@
 $dbms = 'mysql';
 $dbserv = 'localhost';
 $dbuser = 'root';
-$dbpass = '';
+$dbpass = 'root';
 $dbname = 'roadsterspot';
+$dbport = '8889';
 
 $subdir = '/';
 
