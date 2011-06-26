@@ -85,6 +85,12 @@ a:hover { color: #036; }
    ||                                              ||
     \\ ========================================== //
 */
+
+body {
+    font-size: 85%;
+}
+
+
 #header {
 	width: 100%;
 	height: 75px;
@@ -94,7 +100,7 @@ a:hover { color: #036; }
 }
 
 .wrap {
-	width: 900px;
+	width: 75%;
 	margin: auto;
 }
 
@@ -103,10 +109,11 @@ a:hover { color: #036; }
 	width: 300px;
 	height: 100px;
 	float: left;
+	font-size: 2.5em;
 }
 
 #mainwrap {
-	width: 900px;
+	width: 75%;
 	margin: auto;
 	padding: 20px;
 	background-color: #EEE;
