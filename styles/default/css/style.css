@@ -85,16 +85,39 @@ a:hover { color: #036; }
    ||                                              ||
     \\ ========================================== //
 */
+#header {
+	width: 100%;
+	height: 75px;
+	background-color: #EEE;
+	margin-bottom: 20px;
+	border-bottom: 2px #888 solid;
+}
+
+.wrap {
+	width: 900px;
+	margin: auto;
+}
+
+#logo {
+	display: block;
+	width: 300px;
+	height: 100px;
+	float: left;
+}
+
+#mainwrap {
+	width: 900px;
+	margin: auto;
+	padding: 20px;
+	background-color: #EEE;
+	border: 2px #888 solid;
+}
 
 
-
-
-
-
-
-
-
-
+#footer {
+	margin-top: 20px;
+	text-align: center;
+}
 
 
 

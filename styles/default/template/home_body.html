@@ -1,0 +1,20 @@
+<!-- INCLUDE overall_header.html -->
+
+<div id="spot_form">
+	<form action="{ROOT_URL}" method="post">
+		<dl>
+			<dt><strong>Kenteken:</strong></dt>
+			<dd><input type="text" name="license_plate_input" value=""></dd>
+			
+			<dt><strong>Location:</strong></dt>
+			<dd><input type="text" id="location_input" name="location" value="" disabled="disabled"><input type="button" onClick="get_location();" name="retrieve_location" value="Automatically get location" /></dd>
+			
+			<dt><strong>Date:</strong></dt>
+			<dd><input type="text" name="date_input" value=""></dd>
+			
+		</dl>
+		<br />
+		<input type="submit" name="submit" value="Spot" />
+	</form>
+</div>
+<!-- INCLUDE overall_footer.html -->
