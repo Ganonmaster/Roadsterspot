@@ -19,5 +19,35 @@
 	<link rel="stylesheet" href="css/style.css?v=2">
 
 	<script src="js/libs/modernizr-1.7.min.js"></script>
+	<script type="text/javascript">
+		//Some geolocation code
+	
+		function get_location()
+		{
+			if (Modernizr.geolocation) 
+			{
+  				navigator.geolocation.getCurrentPosition(receive_map_position, handle_location_error);
+			}
+			else
+			{
+  				// no native support; fuck your shitty browser
+    		}
+		}
+		
+		function receive_map_position(position)
+		{
+			var latitude = position.coords.latitude;
+  			var longitude = position.coords.longitude;
+			// let's show a map or do something interesting!
+		}
+		
+		function handle_location_error(err)
+		{
+			if (err.code == 1)
+			{
+  				// user said no!
+  		  	}
+		}
+	</script>
 </head>
 <body>

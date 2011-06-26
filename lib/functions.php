@@ -282,6 +282,59 @@ function check_email_address($email)
 	}
 }
 
+function get_licenseplate_sidecode($Licenseplate)
+{
+	$arrSC = array();
+	$scUitz = '';
+	$Licenseplate = strtoupper(str_replace('-', '',$Licenseplate));
+	$arrSC[0] = '/^[a-zA-Z]{2}[\d]{2}[\d]{2}$/'; // 1 XX-99-99
+	$arrSC[1] = '/^[\d]{2}[\d]{2}[a-zA-Z]{2}$/'; // 2 99-99-XX
+	$arrSC[2] = '/^[\d]{2}[a-zA-Z]{2}[\d]{2}$/'; // 3 99-XX-99
+	$arrSC[3] = '/^[a-zA-Z]{2}[\d]{2}[a-zA-Z]{2}$/'; // 4 XX-99-XX
+	$arrSC[4] = '/^[a-zA-Z]{2}[a-zA-Z]{2}[\d]{2}$/'; // 5 XX-XX-99
+	$arrSC[5] = '/^[\d]{2}[a-zA-Z]{2}[a-zA-Z]{2}$/'; // 6 99-XX-XX
+	$arrSC[6] = '/^[\d]{2}[a-zA-Z]{3}[\d]{1}$/'; // 7 99-XXX-9
+	$arrSC[7] = '/^[\d]{1}[a-zA-Z]{3}[\d]{2}$/'; // 8 9-XXX-99
+	$arrSC[8] = '/^[a-zA-Z]{2}[\d]{3}[a-zA-Z]{1}$/'; // 9 XX-999-X
+	$arrSC[9] = '/^[a-zA-Z]{1}[\d]{3}[a-zA-Z]{2}$/'; // 10 X-999-XX
+
+	//except licenseplates for diplomats
+	$scUitz = '/^CD[ABFJNST][0-9]{1,3}$/'; //for example: CDB1 of CDJ45
+	for($i=0;$i<count($arrSC);$i++)
+	{
+		if (preg_match($arrSC[$i],$Licenseplate))
+		{
+			return $i+1;
+		}
+	}
+	
+	if (preg_match($scUitz,$Licenseplate)) {
+		return 'CD';
+	}
+	
+	return false;
+}
+
+function format_licenseplate($Licenseplate,$Sidecode)
+{
+	$Licenseplate = strtoupper(str_replace('-', '',$Licenseplate));
+	if ($Sidecode <= 6) {
+		return substr($Licenseplate,0,2) . '-' . substr($Licenseplate,2,2) . '-' . substr($Licenseplate,4,2);
+	}
+	
+	if ($Sidecode == 7 || $Sidecode == 9)
+	{
+		return substr($Licenseplate,0,2) . '-' . substr($Licenseplate,2,3) . '-' . substr($Licenseplate,5,1);
+	}
+	
+	if ($Sidecode == 8 || $Sidecode == 10)
+	{
+		return substr($Licenseplate,0,1) . '-' . substr($Licenseplate,1,3) . '-' . substr($Licenseplate,4,2);
+	}
+	
+	return $Licenseplate;
+}
+
 function page_header()
 {
 	global $db, $template, $subdir, $user;
