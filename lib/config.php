@@ -5,7 +5,7 @@ $dbserv = 'localhost';
 $dbuser = 'root';
 $dbpass = 'root';
 $dbname = 'roadsterspot';
-$dbport = '8889';
+$dbport = false;
 
 $subdir = '/';
 
