@@ -64,10 +64,12 @@ CREATE TABLE `spots` (
 --
 
 CREATE TABLE `users` (
-  `user_id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_id` mediumint(255) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `user_email` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `user_password` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `user_admin` mediumint(255) NOT NULL,
+  `user_approved` mediumint(255) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 

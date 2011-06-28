@@ -1,14 +1,17 @@
 <!-- INCLUDE overall_header.html -->
-<div id="sign_in_container">
+<!-- IF SUBMIT_SUCCESS == 1 -->
+    <h1>Account Created</h1>
+    <p>Je account is aangemaakt maar moet nog worden goedgekeurd door een administrator.</p>
+<!-- ELSE -->
 <div id="signup_form">
 	<h1>Sign up</h1>
-	<form action="{ROOT_URL}" method="post">
+	<form action="{ROOT_URL}signup/" method="post">
 		<dl>
 			<dt><strong>Gebruikersnaam:</strong></dt>
 			<dd><input type="text" name="username_input_field" value=""></dd>
 			
 			<dt><strong>E-mail:</strong></dt>
-			<dd><input type="text" id="email" name="email_input_field" value="" disabled="disabled" /></dd>
+			<dd><input type="text" id="email" name="email_input_field" value="" /></dd>
 			
 			<dt><strong>Wachtwoord:</strong></dt>
 			<dd><input type="password" name="password_input_field" value=""></dd>
@@ -18,25 +21,6 @@
 		<input type="submit" name="submit" value="Spot" />
 	</form>
 </div>
-<div id="login_form">
-	<h1>Login</h1>
-	<form action="{ROOT_URL}" method="post">
-		<dl>
-			<dt><strong>Gebruikersnaam:</strong></dt>
-			<dd><input type="text" name="username_input_field" value=""></dd>
-			
-			<dt><strong>E-mail:</strong></dt>
-			<dd><input type="text" id="email" name="email_input_field" value="" disabled="disabled" /></dd>
-			
-			<dt><strong>Wachtwoord:</strong></dt>
-			<dd><input type="password" name="password_input_field" value=""></dd>
-			
-		</dl>
-		<br />
-		<input type="submit" name="submit" value="Spot" />
-	</form>
-</div>
-</div>
-
+<!-- ENDIF -->
 <br class="clear"/>
 <!-- INCLUDE overall_footer.html -->

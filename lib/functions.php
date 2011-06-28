@@ -335,6 +335,13 @@ function format_licenseplate($Licenseplate,$Sidecode)
 	return $Licenseplate;
 }
 
+function seed_password($seed, $password)
+{
+    $seed = sha1(md5($seed));
+    $password = sha1(md5($password));
+    return sha1($seed.$password);
+}
+
 function page_header()
 {
 	global $db, $template, $subdir, $user;

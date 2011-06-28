@@ -40,4 +40,39 @@ class config
 		}
 		$db->sql_freeresult($result);
 	}
+	
+	function user_name_exists($username)
+	{
+	    global $db;
+	
+	    $sql = "SELECT user_id 
+	        FROM users 
+	        WHERE user_name = '" . $db->sql_escape($username). "'";
+		$result = $db->sql_query($sql);
+		$user = $db->sql_fetchrow($result);
+		if(!empty($user))
+		{
+		    return true;
+		}
+		
+		return false;
+	}
+	
+	function user_email_exists($email)
+	{
+	    global $db;
+	
+	    $sql = "SELECT user_id 
+	        FROM users 
+	        WHERE user_email = '" . $db->sql_escape($email). "'";
+		$result = $db->sql_query($sql);
+		$user = $db->sql_fetchrow($result);
+		if(!empty($user))
+		{
+		    return true;
+		}
+		
+		
+		return false;
+	}
 }
