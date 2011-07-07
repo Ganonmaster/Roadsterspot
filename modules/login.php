@@ -42,7 +42,8 @@ class login
 				}
 			}
 		}
-		trigger_error('ERROR_LOGIN_UNSPECIFIED', E_USER_NOTICE);
+		
+		exit;
 	}
 	/*
 		Return values
@@ -55,11 +56,11 @@ class login
 	*/
 	private function submit()
 	{
-		global $db, $template, $config;
+		global $db, $template, $config, $user;
 		
 		//Submit
-		$username_input = (isset($_POST['username_login_input'])) ? $_POST['username_login_input'] : ''; //Errorno 1
-		$password_input = (isset($_POST['username_login_input'])) ? $_POST['username_login_input'] : ''; //Errorno 3
+		$username_input = (isset($_POST['username_login_input'])) ? $_POST['username_login_input'] : '';
+		$password_input = (isset($_POST['password_login_input'])) ? $_POST['password_login_input'] : ''; 
 		
 		if(strlen($username_input) < 3)
 		{
@@ -71,18 +72,18 @@ class login
 		    return 2;
 		}
 		
-		if($config->user_name_exists($username_input))
-		{
-		    return 3;
-		}
-		
-		$seeded_password = seed_password($username_input, $password_input);
-		
 		$sql = "SELECT * 
 			FROM users 
 			WHERE user_name = '" . $db->sql_escape($username_input) . "'";
 		$result = $db->sql_query($sql);
 		$user_info = $db->sql_fetchrow($result);
+		
+		if(empty($user_info))
+		{
+		    return 3;
+		}
+		
+		$seeded_password = seed_password($username_input, $password_input);
 		
 		if($user_info['user_password'] != $seeded_password)
 		{
@@ -93,6 +94,8 @@ class login
 		{
 			return 5;
 		}
+		
+		$user->login($user_info['user_id']);
 		
 		return 0;
 	}

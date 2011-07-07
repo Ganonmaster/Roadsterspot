@@ -5,6 +5,7 @@ session_start();
 require('./lib/config.php');
 require('./lib/functions.php');
 require('./lib/functions_default.php');
+require('./lib/user.php');
 require('./lib/template/template.php');
 require('./lib/dbal/' . $dbms . '.php');
 
@@ -17,6 +18,7 @@ $template = new template();
 $template->set_template();
 $config = new config();
 $config->get_config();
+$user = new user();
 page_header();
 
 $module = (isset($_REQUEST['module'])) ? $_REQUEST['module'] : 'home';

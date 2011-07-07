@@ -80,21 +80,23 @@
 	
 	<div id="mainwrap">
 		<div class="rightbar">
-			<form action="{ROOT_URL}login" method="post">
+			<div class="form_field">
+				<h3 class="left" id="loginheading">Login</h3>
+				<a href="{ROOT_URL}signup/" class="right">Registreer</a>
+				<br class="clear"/>
+			</div>
+			<form action="{ROOT_URL}login/" method="post">
 				<div class="form_field">
-					<h3>Login</h3>
-				</div>	
-				<div class="form_field">
-					<label for="username_login_input">Login:</label>
-					<input type="text" name="username_login_input" id="username_login_input" value="" tabindex="1" />
+					<label for="username_login_input">Gebruikersnaam:</label>
+					<input type="text" name="username_login_input" id="username_login_input" value="" />
 				</div>
 				<div class="form_field">
-					<label for="password_login_input">Password:</label>
-					<input type="password" name="password_login_input" id="password_login_input" value="" tabindex="2" />
+					<label for="password_login_input">Wachtwoord:</label>
+					<input type="password" name="password_login_input" id="password_login_input" value="" />
 				</div>
 			
 				<div class="form_field">
-					<input type="submit" name="submit_login" value="Log in" />
+					<input type="submit" name="submit" value="submit" class="input" />
 				</div>	
 			</form>
 		</div>

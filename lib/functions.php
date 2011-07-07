@@ -351,6 +351,7 @@ function page_header()
 	
 	$template->assign_vars(array(
 		'ROOT_URL'	=> ROOT_URL,
+		'LOGGED_IN'	=> ($user->logged_in != false) ? 1 : 0,
 	));
 	
 	return;
