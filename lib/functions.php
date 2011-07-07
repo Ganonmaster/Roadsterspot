@@ -7,11 +7,10 @@ function msg_handler($errno, $msg_text, $errfile, $errline)
 {
 	global $db, $template, $msg_title, $msg_long_text;
 
-	// Message handler is stripping text. In case we need it, we are possible to define long text...
-	if (isset($msg_long_text) && $msg_long_text && !$msg_text)
-	{
-		$msg_text = $msg_long_text;
-	}
+	include('./lib/lang/error.php');
+	
+	$msg_title = (isset($lang_error[$msg_text.'_TITLE'])) ? $lang_error[$msg_text.'_TITLE'] : $msg_text.'_TITLE';
+	$msg_text = (isset($lang_error[$msg_text.'_DESC'])) ? $lang_error[$msg_text.'_DESC'] : $msg_text.'_DESC';
 
 	switch ($errno)
 	{

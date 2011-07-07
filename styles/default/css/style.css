@@ -97,15 +97,15 @@ body {
 
 h1 {
     font-size: 2em;
-	font-family: 'Amaranth', arial, sans-serif;
+	font-family: 'Cabin', arial, sans-serif;
 }
 h2 {
     font-size: 1.8em;
-	font-family: 'Amaranth', arial, sans-serif;
+	font-family: 'Cabin', arial, sans-serif;
 }
 h3 {
     font-size: 1.5em;
-	font-family: 'Amaranth', arial, sans-serif;
+	font-family: 'Cabin', arial, sans-serif;
 }
 
 p {
@@ -164,7 +164,7 @@ blockquote {
 
 #logo {
 	display: block;
-	font-family: 'Amaranth', arial, serif;
+	font-family: 'Cabin', arial, serif;
 	font-weight: bold;
 	width: 300px;
 	height: 50px;
@@ -184,7 +184,34 @@ blockquote {
     text-shadow: 1px 1px 5px #888;
 }
 
+#logo_smartiechick {
+	margin-top: 5px;
+	float: right;
+}
+
+.leftbar {
+	float: left;
+	height: 100%;
+	width: 65%;
+}
+
+.rightbar {
+	width: 30%;
+	height: 100%;
+	float: right;
+	background-color: #CCC;
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-left: 2px solid #AAA;
+}
+
+.rightbar input {
+	float: right;
+}
+
 #mainwrap {
+	position: relative;
 	font-size: 1.2em;
 	width: 75%;
 	margin: auto;
@@ -207,6 +234,13 @@ blockquote {
     -webkit-box-shadow: 0px 0px 2px 0px #9e9e9e;
     -moz-box-shadow: 0px 0px 2px 0px #9e9e9e;
     box-shadow: 0px 0px 2px 0px #9e9e9e;
+}
+
+.form_field {
+	margin: 10px;
+}
+label {
+	font-weight: bold;
 }
 
 #signup_form {
