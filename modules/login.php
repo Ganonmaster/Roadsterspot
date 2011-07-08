@@ -95,7 +95,7 @@ class login
 			return 5;
 		}
 		
-		$user->login($user_info['user_id']);
+		$user->log_in($user_info['user_id']);
 		
 		return 0;
 	}

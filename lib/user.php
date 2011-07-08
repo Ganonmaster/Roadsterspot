@@ -14,6 +14,7 @@ class user
 		if(!empty($this->uid))
 		{
 			$this->get_userdata();
+			$this->logged_in = true;
 		}
 	}
 	
