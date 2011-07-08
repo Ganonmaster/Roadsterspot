@@ -22,6 +22,27 @@ class signup
 			{
 				//Failed, check for error code
 				//handle gracefully
+				switch($errorcode)
+				{
+					case 1:
+						trigger_error('ERROR_SIGNUP_USERNAME_SHORT', E_USER_NOTICE);
+					break;
+					case 2:
+						trigger_error('ERROR_SIGNUP_EMAIL_INVALID', E_USER_NOTICE);
+					break;
+					case 3:
+						trigger_error('ERROR_SIGNUP_PASSWORD_SHORT', E_USER_NOTICE);
+					break;
+					case 4:
+						trigger_error('ERROR_SIGNUP_USERNAME_TAKEN', E_USER_NOTICE);
+					break;		
+					case 5:
+						trigger_error('ERROR_SIGNUP_EMAIL_TAKEN', E_USER_NOTICE);
+					break;				
+					default:
+						trigger_error('ERROR_SIGINUP_UNSPECIFIED', E_USER_NOTICE);
+					break;
+				}
 			}
 		}
 		
@@ -57,12 +78,12 @@ class signup
 		
 		if($config->user_name_exists($username_input))
 		{
-		    return 1;
+		    return 4;
 		}
 		
 		if($config->user_email_exists($email_input))
 		{
-		    return 2;
+		    return 5;
 		}
 		
 		$new_password = seed_password($username_input, $password_input);

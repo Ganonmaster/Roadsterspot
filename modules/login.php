@@ -13,7 +13,7 @@ class login
 			{
 				//Submitted successfully
 				//Log in
-				trigger_error('LOGIN_SUCCESS', E_USER_NOTICE);
+				redirect('', 'LOGIN_SUCCESS');
 			}
 			else
 			{

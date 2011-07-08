@@ -26,6 +26,12 @@ class user
 		$this->logged_in = true;
 	}
 	
+	function log_out()
+	{
+		unset($_SESSION['uid']);
+		return;
+	}
+	
 	private function get_userdata()
 	{
 		global $db, $template;

@@ -49,6 +49,7 @@ else
 	trigger_error('The specified module was not found.');
 }
 
+header('HTTP/1.1 200 OK');
 header('Content-type: text/html; charset=utf-8');
 $template->display('body');
 $db->sql_close();

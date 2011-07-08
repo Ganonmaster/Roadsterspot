@@ -1,0 +1,15 @@
+<!-- INCLUDE overall_header.html -->
+
+<div id="spot_form">
+	<h1>Profiel : {VIEW_PROFILE_USERNAME} <!-- IF EDIT_USER_PROFILE == 1 --><a href="#" class="right">Aanpassen</a><!-- ENDIF --></h1>
+	<!-- IF USER_ADMIN == 1-->
+		<!-- IF VIEW_PROFILE_USER_APPROVED == 1-->
+			<p>Gebruiker is goedgekeurd. <a href="#">Klik hier om ongedaan te maken.</a></p>
+		<!-- ELSE -->
+			<p>Gebruiker is nog niet goedgekeurd. <a href="#">Klik hier om goed te keuren.</a></p>
+		<!-- ENDIF -->
+	<!-- ENDIF -->
+	<p>Deze gebruiker heeft geen spots.</p>
+</div>
+
+<!-- INCLUDE overall_footer.html -->

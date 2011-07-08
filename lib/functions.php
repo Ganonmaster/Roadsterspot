@@ -341,6 +341,12 @@ function seed_password($seed, $password)
     return sha1($seed.$password);
 }
 
+function redirect($page, $message)
+{
+	header('Refresh: 2; url=' . ROOT_URL . $page);
+	trigger_error($message, E_USER_NOTICE);
+}
+
 function page_header()
 {
 	global $db, $template, $subdir, $user;
@@ -350,8 +356,11 @@ function page_header()
 	define('ROOT_URL', $root_url);
 	
 	$template->assign_vars(array(
-		'ROOT_URL'	=> ROOT_URL,
-		'LOGGED_IN'	=> ($user->logged_in != false) ? 1 : 0,
+		'ROOT_URL'		=> ROOT_URL,
+		'LOGGED_IN'		=> ($user->logged_in != false) ? 1 : 0,
+		'USER_ADMIN'	=> ($user->userdata['user_admin']) ? 1 : 0,
+		'USER_NAME'		=> (!empty($user->userdata['user_name'])) ? $user->userdata['user_name'] : 'Anonymous',
+		'USER_ID'		=> (!empty($user->userdata['user_id'])) ? $user->userdata['user_id'] : 0,
 	));
 	
 	return;

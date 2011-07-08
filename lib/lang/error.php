@@ -1,6 +1,11 @@
 <?php
 
 $lang_error = array(
+	//Authentication
+
+	"LOGOUT_SUCCESS_TITLE"	=> "Succes",
+	"LOGOUT_SUCCESS_DESC"	=> "U bent uitgelogd.",
+	
 	"LOGIN_SUCCESS_TITLE"	=> "Succes",
 	"LOGIN_SUCCESS_DESC"	=> "U bent ingelogd.",
 
@@ -21,4 +26,9 @@ $lang_error = array(
 	
 	"ERROR_LOGIN_NOT_APPROVED_TITLE" => "Login fout - Gebruiker niet goedgekeurd",
 	"ERROR_LOGIN_NOT_APPROVED_DESC" => "U kunt nog niet inloggen omdat uw account nog niet is goedgekeurd.",
+	
+	//Signup
+	
+	
+	//Misc
 );

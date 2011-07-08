@@ -1,9 +1,9 @@
 <!doctype html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7 ]> <html lang="nl" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="nl" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="nl" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="nl" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="nl" class="no-js"> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -25,6 +25,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Lekton:regular,italic,bold&v1' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Amaranth:regular,regularitalic,bold,bolditalic&v1' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Cabin:regular,regularitalic,500,500italic,600,600italic,bold,bolditalic&v1' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Bangers&v1' rel='stylesheet' type='text/css'>
 	<script src="{ROOT_URL}js/libs/modernizr-1.7.min.js"></script>
 	<script type="text/javascript">
 		//Some geolocation code
@@ -79,7 +80,7 @@
 	<div id="header">
 		<div class="wrap">
 			<a href="{ROOT_URL}" id="logo">roadsterSpot</a>
-			<img src="{ROOT_URL}styles/default/images/logo.png" alt="Smartiechick" id="logo_smartiechick"/>
+			<a href="http://smartiechick.nl/index.htm"><img src="{ROOT_URL}styles/default/images/logo.png" alt="Smartiechick" id="logo_smartiechick"/></a>
 		</div>
 	</div>
 	
@@ -105,6 +106,12 @@
 					<input type="submit" name="submit" value="submit" class="input" />
 				</div>	
 			</form>
+		<!-- ELSE -->
+			<div class="form_field">
+				<h3 class="left" id="loginheading">Welkom terug, <a href="{ROOT_URL}view/user/{USER_ID}">{USER_NAME}</a>!</h3>
+				<a href="{ROOT_URL}logout/" class="right">Log uit</a>
+				<br class="clear"/>
+			</div>
 		<!-- ENDIF -->
 		</div>
 		<div class="leftbar">
