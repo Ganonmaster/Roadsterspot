@@ -12,7 +12,6 @@ class login
 			if($errorcode == 0)
 			{
 				//Submitted successfully
-				//Log in
 				redirect('', 'LOGIN_SUCCESS');
 			}
 			else

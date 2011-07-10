@@ -18,18 +18,34 @@ class user
 		}
 	}
 	
+	function update_env()
+	{
+		global $db, $template;
+		
+		$template->assign_vars(array(
+			'LOGGED_IN'		=> ($this->logged_in != false) ? 1 : 0,
+			'USER_ADMIN'	=> ($this->userdata['user_admin']) ? 1 : 0,
+			'USER_NAME'		=> (!empty($this->userdata['user_name'])) ? $this->userdata['user_name'] : 'Anonymous',
+			'USER_ID'		=> (!empty($this->userdata['user_id'])) ? $this->userdata['user_id'] : 0,
+		));
+	}
+	
 	function log_in($userid)
 	{
 		$_SESSION['uid'] = $userid;
 		$this->get_session_var();
 		$this->get_userdata();
 		$this->logged_in = true;
+		$this->update_env();
 	}
 	
 	function log_out()
 	{
 		unset($_SESSION['uid']);
-		return;
+		$this->logged_in = false;
+		$userdata = null;
+		$logged_in = false;
+		$this->update_env();
 	}
 	
 	private function get_userdata()

@@ -1,0 +1,22 @@
+<!-- INCLUDE overall_header.html -->
+<table>
+	<thead>
+		<tr>
+			<td>Username</td>
+			<td>Email</td>
+			<td>Admin</td>
+			<td>Approved</td>
+		</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN user_listing -->
+		<tr>
+			<td>{user_listing.USER_LISTING_NAME}</td>
+			<td>{user_listing.USER_LISTING_EMAIL}</td>
+			<td><a href="{ROOT_URL}user_list/admin/{user_listing.USER_LISTING_ID}/"><!-- IF user_listing.USER_LISTING_ADMIN == 0 -->Maak admin<!-- ELSE -->Maak gebruiker<!-- ENDIF --></a></td>
+			<td><a href="{ROOT_URL}user_list/approve/{user_listing.USER_LISTING_ID}/"><!-- IF user_listing.USER_LISTING_APPROVED == 0 -->Keur goed<!-- ELSE -->Keur af<!-- ENDIF --></a></td>
+		</tr>
+		<!-- END user_listing -->
+	</tbody>
+</table>
+<!-- INCLUDE overall_footer.html -->

@@ -86,6 +86,10 @@ function msg_handler($errno, $msg_text, $errfile, $errline)
 		break;
 		case E_USER_WARNING:
 		case E_USER_NOTICE:
+			if(!defined('ROOT_URL'))
+			{
+				page_header();
+			}
 			$template->assign_vars(array(
 				'MESSAGE_TITLE'	=> $msg_title,
 				'MESSAGE_TEXT'	=> $msg_text,
@@ -104,25 +108,6 @@ function msg_handler($errno, $msg_text, $errfile, $errline)
 	// If we notice an error not handled here we pass this back to PHP by returning false
 	// This may not work for all php versions
 	return false;
-}
-
-function mobile_error_handler($msg_text)
-{
-	global $db, $template;
-	
-	//Error handling for within our own site, not used at this time
-	$template->assign_vars(array(
-		'MESSAGE_TEXT'	=> $msg_text,
-		'ERROR_MOBILE'	=> 1,
-	));
-
-	$template->set_filenames(array(
-		'error'	=> 'iphone_body.html',
-	));
-
-	$template->display('error');
-	$db->sql_close();
-	exit;
 }
 
 /**
