@@ -56,7 +56,34 @@ class view
 	
 	function roadster()
 	{
+		global $db, $user, $template;
 		
+		$roadster = (isset($_GET['input'])) ? $_GET['input'] : 0;
+		
+		if($roadster == 0)
+		{
+			trigger_error("Input invalid");
+		}
+		
+		$sql = "SELECT * 
+			FROM roadster 
+			WHERE roadster_id = '" . $db->sql_escape($roadster) . "'";
+		$result = $db->sql_query($sql);
+		$view_roadster = $db->sql_fetchrow($result);
+		
+		if(empty($view_roadster))
+		{
+			trigger_error('roadster does not exist');
+		}
+		
+		$template->assign_vars(array(
+			"VIEW_ROADSTER_USERNAME"	=> htmlspecialchars($view_roadster['roadster_license_plate']),
+			"VIEW_ROADSTER_USER_ID"		=> $view_roadster['roadster_id'],
+		));
+		
+		$template->set_filenames(array(
+			'body'	=> 'view_user.html',
+		));
 		
 		
 	}
