@@ -42,6 +42,7 @@ class user_list
 		global $db, $template, $config, $user;
 		
 		$userid = (isset($_GET['input'])) ? $_GET['input'] : 0;
+		$redirect = (isset($_GET['redirect'])) ? $_GET['redirect'] : 'user_list/';
 		
 		if($userid == 0)
 		{
@@ -67,11 +68,11 @@ class user_list
 		$permission_setting = ($view_user['user_admin'] == 0) ? 1 : 0;
 		
 		$sql = "UPDATE users 
-			SET (user_admin = '" . $permission_setting . "') 
+			SET user_admin = '" . $permission_setting . "' 
 			WHERE user_id = '" . $db->sql_escape($userid) . "'";
 		$db->sql_query($sql);
 		
-		redirect('user_list/', 'User permissions changed');
+		redirect($redirect, 'User permissions changed');
 	}
 	
 	function approve()
@@ -79,6 +80,7 @@ class user_list
 		global $db, $template, $config, $user;
 		
 		$userid = (isset($_GET['input'])) ? $_GET['input'] : 0;
+		$redirect = (isset($_GET['redirect'])) ? $_GET['redirect'] : 'user_list/';
 		
 		if($userid == 0)
 		{
@@ -104,10 +106,10 @@ class user_list
 		$approval_setting = ($view_user['user_approved'] == 0) ? 1 : 0;
 		
 		$sql = "UPDATE users 
-			SET (user_approved = '" . $approval_setting . "') 
+			SET user_approved = '" . $approval_setting . "' 
 			WHERE user_id = '" . $db->sql_escape($userid) . "'";
 		$db->sql_query($sql);
 		
-		redirect('user_list/', 'User approved changed');
+		redirect($redirect, 'User approved changed');
 	}
 }

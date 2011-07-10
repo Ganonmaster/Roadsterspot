@@ -368,6 +368,7 @@ FileETag None
 RewriteRule ^([A-Za-z0-9-_]+)/$ ?module=$1
 RewriteRule ^([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/$ ?module=$1&method=$2
 RewriteRule ^([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/$ ?module=$1&method=$2&input=$3
+RewriteRule ^([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/$ ?module=$1&method=$2&input=$3&redirect=$4
 
 
 

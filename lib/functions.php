@@ -328,6 +328,8 @@ function seed_password($seed, $password)
 
 function redirect($page, $message)
 {
+	$page = str_replace('-', '/', $page);
+
 	header('Refresh: 2; url=' . ROOT_URL . $page);
 	trigger_error($message, E_USER_NOTICE);
 }
