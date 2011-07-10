@@ -85,8 +85,8 @@ class home
 		
 		//Add spot to the database
 		$sql = "INSERT INTO spots 
-			(user_id, roadster_id, spot_coordinates) 
-			VALUES ('" . $user->uid . "', '" . $roadster_id . "', '" . $db->sql_escape($location_input) . "')";
+			(user_id, roadster_id, spot_coordinates, spot_date) 
+			VALUES ('" . $user->uid . "', '" . $roadster_id . "', '" . $db->sql_escape($location_input) . "', '" . $db->sql_escape($timestamp) . "')";
 		$db->sql_query($sql);
 		
 		return 0;
