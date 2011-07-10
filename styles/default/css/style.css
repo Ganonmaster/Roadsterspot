@@ -160,6 +160,11 @@ td{
 	padding-top: 10px;
 	padding-left: 10px;
 }
+
+.roadster_not_on_road:nth-child {
+	background-color: #FCC;	
+}
+
 .input {
 	background-image: -webkit-gradient(
         linear,
@@ -318,6 +323,14 @@ td{
 }
 label {
 	font-weight: bold;
+}
+
+.form_field label {
+	float: left;
+}
+
+.form_field input {
+	float: right;
 }
 
 #signup_form {

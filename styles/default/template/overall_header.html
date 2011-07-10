@@ -74,6 +74,8 @@
 				alert('YOU BROKE IT');
 			}
 		}
+		
+		window.onload=get_location;
 	</script>
 </head>
 <body>
@@ -108,13 +110,14 @@
 			</form>
 		<!-- ELSE -->
 			<div class="form_field">
-				<h3 class="left" id="loginheading">Welkom terug, <a href="{ROOT_URL}view/user/{USER_ID}">{USER_NAME}</a>!</h3>
+				<h3 class="left" id="loginheading">Welkom terug, <a href="{ROOT_URL}view/user/{USER_ID}/">{USER_NAME}</a>!</h3>
 				<a href="{ROOT_URL}logout/" class="right">Log uit</a>
 				<br class="clear"/>
 			</div>
 			<div class="form_field">
 				<ul>
 					<!-- IF USER_ADMIN == 1 --><li><a href="{ROOT_URL}user_list/">Gebruiker management</a></li><!-- ENDIF -->
+					<li><a href="{ROOT_URL}roadster_list/">Roadster management</a></li>
 				</ul>
 			</div>
 		<!-- ENDIF -->

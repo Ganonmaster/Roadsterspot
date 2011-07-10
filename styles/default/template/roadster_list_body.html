@@ -1,0 +1,25 @@
+<!-- INCLUDE overall_header.html -->
+<table>
+	<thead>
+		<tr>
+			<td>Nummerbord</td>
+			<td>Kleur</td>
+			<td>Jaar</td>
+		</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN roadster_listing -->
+		<tr <!-- IF roadster_listing.ROADSTER_LISTING_ON_ROAD == 0 -->class="roadster_not_on_road"<!-- ENDIF -->>
+			<td>{roadster_listing.ROADSTER_LISTING_PLATE}</td>
+			<td>{roadster_listing.ROADSTER_LISTING_COLOR}</td>
+			<td>{roadster_listing.ROADSTER_LISTING_YEAR}</td>
+		</tr>
+		<!-- END roadster_listing -->
+		<!-- BEGIN roadster_listing_empty -->
+		<tr>
+			<td colspan="3">Geen roadsters</td>
+		</tr>
+		<!-- END roadster_listing_empty -->
+	</tbody>
+</table>
+<!-- INCLUDE overall_footer.html -->
