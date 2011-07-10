@@ -28,14 +28,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `roadster` (
   `roadster_id` mediumint(255) NOT NULL AUTO_INCREMENT,
   `roadster_license_plate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `roadster_owner_email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `roadster_color` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `roadster_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `roadster_year` mediumint(255) NOT NULL,
-  `roadster_on_road` int(11) NOT NULL,
+  `roadster_owner_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `roadster_color` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `roadster_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `roadster_year` mediumint(255) DEFAULT NULL,
+  `roadster_on_road` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`roadster_id`),
   UNIQUE KEY `roadster_license_plate` (`roadster_license_plate`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `roadster`
@@ -53,9 +53,10 @@ CREATE TABLE IF NOT EXISTS `spots` (
   `user_id` mediumint(255) NOT NULL,
   `roadster_id` mediumint(255) NOT NULL,
   `spot_coordinates` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `spot_location_readable` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `spot_location_readable` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `spot_date` int(255) NOT NULL,
   PRIMARY KEY (`spot_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `spots`
@@ -81,3 +82,4 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 -- Dumping data for table `users`
 --
+
