@@ -77,12 +77,12 @@ class view
 		}
 		
 		$template->assign_vars(array(
-			"VIEW_ROADSTER_USERNAME"	=> htmlspecialchars($view_roadster['roadster_license_plate']),
-			"VIEW_ROADSTER_USER_ID"		=> $view_roadster['roadster_id'],
+			"VIEW_ROADSTER_PLATE"	=> $view_roadster['roadster_license_plate'],
+			"VIEW_ROADSTER_ID"		=> $view_roadster['roadster_id'],
 		));
 		
 		$template->set_filenames(array(
-			'body'	=> 'view_user.html',
+			'body'	=> 'view_roadster.html',
 		));
 		
 		
