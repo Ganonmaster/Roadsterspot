@@ -2,7 +2,26 @@
 
 <div id="spot_form">
 	<h1>Roadster : {VIEW_ROADSTER_PLATE}</h1>
+	<!-- IF SHOW_SPOTS -->
 	<p>Deze roadster heeft geen spots.</p>
+	<!-- ELSE -->
+	<table>
+		<thead>
+			<tr>
+				<td>Locatie</td>
+				<td>Datum</td>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN spot_list -->
+			<tr>
+				<td>{spot_list.SPOT_LOCATION}</td>
+				<td>{spot_list.SPOT_TIME}</td>
+			</tr>
+			<!-- END spot_list -->
+		</tbody>
+	</table>
+	<!-- ENDIF -->
 </div>
 
 <!-- INCLUDE overall_footer.html -->

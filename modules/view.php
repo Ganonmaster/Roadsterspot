@@ -81,6 +81,27 @@ class view
 			"VIEW_ROADSTER_ID"		=> $view_roadster['roadster_id'],
 		));
 		
+		$sql = "SELECT * 
+			FROM spots 
+			WHERE roadster_id = '" . $view_roadster['roadster_id'] . "'";
+		$result = $db->sql_query($sql);
+		$spots = $db->sql_fetchrowset($result);
+		
+		$template->assign_vars(array(
+			"SHOW_SPOTS"	=> (empty($spots)) ? 1 : 0,
+		));
+
+		if(!empty($spots))
+		{
+			foreach($spots as $spot)
+			{
+				$template->assign_block_vars('spot_list', array(
+					"SPOT_LOCATION"	=> $spot['spot_location_readable'],
+					"SPOT_TIME"	=> date('l jS \of F Y h:i:s A', $spot['spot_date']),
+				));
+			}
+		}
+		
 		$template->set_filenames(array(
 			'body'	=> 'view_roadster.html',
 		));
