@@ -9,7 +9,8 @@ class home
 		
 		if(isset($_POST['submit']))
 		{
-			if($this->submit($_POST) == 0)
+			$errorcode = $this->submit($_POST);
+			if($errorcode == 0)
 			{
 				//Submitted successfully
 				redirect('', 'SPOT_SUCCESS');
@@ -17,7 +18,21 @@ class home
 			else
 			{
 				//Failed, check for error code
-				redirect('', 'SPOT_FAIL');
+				switch($errorcode)
+				{
+					case 1:
+						trigger_error('ERROR_SPOT_LICENSE_PLATE', E_USER_NOTICE);
+					break;
+					case 2:
+						trigger_error('ERROR_SPOT_GEOCODE', E_USER_NOTICE);
+					break;
+					case 3:
+						trigger_error('ERROR_SPOT_DATE_INVALID', E_USER_NOTICE);
+					break;	
+					default:
+						trigger_error('ERROR_SPOT_UNSPECIFIED', E_USER_NOTICE);
+					break;
+				}
 			}
 		}
 		
@@ -41,13 +56,15 @@ class home
 			return 1;
 		}
 		
-		if(preg_match('/([0-9.-]+).+?([0-9.-]+)/', $location_input, $matches) == 0)
+		$location = geocode($location_input);
+		
+		if($location == false)
 		{
 			return 2;
 		}
 		
-		$lat=(float)$matches[1];
-		$long=(float)$matches[2];
+		$location_coords = $location[0];
+		$location_readable = $location[1];
 		
 		if(sizeof($date_input) != 3)
 		{
@@ -85,8 +102,8 @@ class home
 		
 		//Add spot to the database
 		$sql = "INSERT INTO spots 
-			(user_id, roadster_id, spot_coordinates, spot_date) 
-			VALUES ('" . $user->uid . "', '" . $roadster_id . "', '" . $db->sql_escape($location_input) . "', '" . $db->sql_escape($timestamp) . "')";
+			(user_id, roadster_id, spot_coordinates, spot_location_readable, spot_date) 
+			VALUES ('" . $user->uid . "', '" . $roadster_id . "', '" . $db->sql_escape($location_coords) . "', '" . $db->sql_escape($location_readable) . "', '" . $db->sql_escape($timestamp) . "')";
 		$db->sql_query($sql);
 		
 		return 0;

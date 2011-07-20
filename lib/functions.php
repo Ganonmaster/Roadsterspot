@@ -319,6 +319,33 @@ function format_licenseplate($Licenseplate,$Sidecode)
 	return $Licenseplate;
 }
 
+function geocode($input)
+{
+	$base_url = "http://maps.google.com/maps/geo?output=xml&key=ABQIAAAAdfp6_8kn9oqveEg9BAz3PRQ_HtiBYhtNgTxmZZfiGMwxv67N2xTiZ";
+    $request_url = $base_url . "&q=" . urlencode($input);
+    $xml = simplexml_load_file($request_url);
+	
+    $status = $xml->Response->Status->code;
+    if (strcmp($status, "200") == 0)
+	{
+		// Successful geocode
+		$coordinates = $xml->Response->Placemark->Point->coordinates;
+		$locality = $xml->Response->Placemark->AddressDetails->Country->AdministrativeArea->SubAdministrativeArea->Locality->LocalityName;
+		
+		return array($coordinates, $locality);
+    }
+	else if (strcmp($status, "620") == 0)
+	{
+		// sent geocodes too fast
+		return false;
+    }
+	else
+	{
+		// failure to geocode
+		return false;
+	}
+}
+
 function seed_password($seed, $password)
 {
     $seed = sha1(md5($seed));

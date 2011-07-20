@@ -10,7 +10,7 @@
 	<tbody>
 		<!-- BEGIN roadster_listing -->
 		<tr <!-- IF roadster_listing.ROADSTER_LISTING_ON_ROAD == 0 -->class="roadster_not_on_road"<!-- ENDIF -->>
-			<td>{roadster_listing.ROADSTER_LISTING_PLATE}</td>
+			<td><a href="{ROOT_URL}view/roadster/{roadster_listing.ROADSTER_LISTING_ID}/">{roadster_listing.ROADSTER_LISTING_PLATE}</a></td>
 			<td>{roadster_listing.ROADSTER_LISTING_COLOR}</td>
 			<td>{roadster_listing.ROADSTER_LISTING_YEAR}</td>
 		</tr>
