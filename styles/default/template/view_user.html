@@ -9,7 +9,32 @@
 			<p>Gebruiker is nog niet goedgekeurd. <a href="{ROOT_URL}user_list/approve/{VIEW_PROFILE_USER_ID}/user_list-{VIEW_PROFILE_USER_ID}/">Klik hier om goed te keuren.</a></p>
 		<!-- ENDIF -->
 	<!-- ENDIF -->
-	<p>Deze gebruiker heeft geen spots.</p>
+	<!-- IF SHOW_SPOTS -->
+	<p>Deze roadster heeft geen spots.</p>
+	<!-- ELSE -->
+	<table>
+		<thead>
+			<tr>
+				<td>Roadster</td>
+				<td>Locatie</td>
+				<td>Datum</td>
+				<td>User</td>
+				<td>Opties</td>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN spot_list -->
+			<tr>
+				<td><a href="{ROOT_URL}view/roadster/{spot_list.SPOT_ROADSTER_ID}/">{spot_list.SPOT_ROADSTER_PLATE}</td>
+				<td>{spot_list.SPOT_LOCATION}</td>
+				<td>{spot_list.SPOT_TIME}</td>
+				<td><a href="{ROOT_URL}view/user/{spot_list.SPOT_USER_ID}/">{spot_list.SPOT_USER}</td>
+				<td><a href="{ROOT_URL}view/delete/spot-{spot_list.SPOT_ID}/view-user-{VIEW_PROFILE_USER_ID}/"><img src="{ROOT_URL}styles/default/images/remove.png" /></a></td>
+			</tr>
+			<!-- END spot_list -->
+		</tbody>
+	</table>
+	<!-- ENDIF -->
 </div>
 
 <!-- INCLUDE overall_footer.html -->
