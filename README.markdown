@@ -7,7 +7,7 @@ Licences under the MIT License.
 *   Spot opmerkingen
 *   Password recovery
 *   Profielen aanpassen
-*   Profielen verwijderen
+*   ~~Profielen verwijderen~~
 *   Auto's verwijderen
 *   Auto info aanpassen
 *   Intro textje

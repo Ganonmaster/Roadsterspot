@@ -112,4 +112,39 @@ class user_list
 		
 		redirect($redirect, 'User approved changed');
 	}
+	
+	function delete()
+	{
+		global $db, $template, $config, $user;
+		
+		$userid = (isset($_GET['input'])) ? $_GET['input'] : 0;
+		$redirect = (isset($_GET['redirect'])) ? $_GET['redirect'] : 'user_list/';
+		
+		if($userid == 0)
+		{
+			trigger_error("Input invalid");
+		}
+		
+		$sql = "SELECT * 
+			FROM users 
+			WHERE user_id = '" . $db->sql_escape($userid) . "'";
+		$result = $db->sql_query($sql);
+		$view_user = $db->sql_fetchrow($result);
+		
+		if(empty($view_user))
+		{
+			trigger_error('user does not exist');
+		}
+		
+		if($userid == $user->uid)
+		{
+			trigger_error('can\'t delete yourself');
+		}
+		
+		$sql = "DELETE FROM users 
+			WHERE user_id = '" . $db->sql_escape($userid) . "'";
+		$db->sql_query($sql);
+		
+		redirect($redirect, 'User deleted');
+	}
 }
