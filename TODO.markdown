@@ -1,6 +1,6 @@
 ##Todo
 
-*Profielen aanpassen
-*Auto's verwijderen
-*Auto info aanpassen
-*Intro textje
+*   Profielen aanpassen
+*   Auto's verwijderen
+*   Auto info aanpassen
+*   Intro textje
