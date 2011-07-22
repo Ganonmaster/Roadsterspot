@@ -10,4 +10,4 @@ Licences under the MIT License.
 *   ~~Profielen verwijderen~~
 *   ~~Auto's verwijderen~~
 *   Auto info aanpassen
-*   Intro textje
+*   ~~Intro textje~~
