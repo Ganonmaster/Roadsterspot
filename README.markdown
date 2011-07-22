@@ -8,6 +8,6 @@ Licences under the MIT License.
 *   Password recovery
 *   Profielen aanpassen
 *   ~~Profielen verwijderen~~
-*   Auto's verwijderen
+*   ~~Auto's verwijderen~~
 *   Auto info aanpassen
 *   Intro textje

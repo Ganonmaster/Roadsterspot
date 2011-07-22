@@ -5,6 +5,7 @@
 			<td>Nummerbord</td>
 			<td>Kleur</td>
 			<td>Jaar</td>
+			<td>Delete</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -13,6 +14,7 @@
 			<td><a href="{ROOT_URL}view/roadster/{roadster_listing.ROADSTER_LISTING_ID}/">{roadster_listing.ROADSTER_LISTING_PLATE}</a></td>
 			<td>{roadster_listing.ROADSTER_LISTING_COLOR}</td>
 			<td>{roadster_listing.ROADSTER_LISTING_YEAR}</td>
+			<td><a href="{ROOT_URL}roadster_list/delete/{roadster_listing.ROADSTER_LISTING_ID}/roadster_list/"><img src="{ROOT_URL}styles/default/images/remove.png" alt="Remove" /></a></td>
 		</tr>
 		<!-- END roadster_listing -->
 		<!-- BEGIN roadster_listing_empty -->
