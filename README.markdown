@@ -11,3 +11,7 @@ Licences under the MIT License.
 *   ~~Auto's verwijderen~~
 *   Auto info aanpassen
 *   ~~Intro textje~~
+*   Alleen admins kunnen dingen aanpassen en verwijderen.
+*   Foto's aan de spot vast (optioneel)
+*   Thumbnail met lightbox.
+*   Language keys!!!
