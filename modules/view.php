@@ -170,7 +170,7 @@ class view
 		
 		if(empty($input))
 		{
-			redirect($redirect, 'INPUT_EMPTY');
+			redirect($redirect, 'INPUT_INVALID');
 		}
 		
 		$inputarray = explode('-', $input);
@@ -184,7 +184,7 @@ class view
 			redirect($redirect, 'NO_SPOT');
 		}
 		
-		redirect($redirect, 'DELETED_THING');
+		redirect($redirect, 'DELETED_SPOT');
 	}
 	
 	private function delete_spot($id, $redirect)

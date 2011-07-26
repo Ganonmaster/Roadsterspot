@@ -46,7 +46,7 @@ class user_list
 		
 		if($userid == 0)
 		{
-			trigger_error("Input invalid");
+			trigger_error("INPUT_INVALID");
 		}
 		
 		$sql = "SELECT * 
@@ -57,12 +57,12 @@ class user_list
 		
 		if(empty($view_user))
 		{
-			trigger_error('user does not exist');
+			trigger_error('USER_NOT_FOUND');
 		}
 		
 		if($userid == $user->uid)
 		{
-			trigger_error('can\'t demote yourself');
+			trigger_error('NO_DEMOTE');
 		}
 		
 		$permission_setting = ($view_user['user_admin'] == 0) ? 1 : 0;
@@ -72,7 +72,7 @@ class user_list
 			WHERE user_id = '" . $db->sql_escape($userid) . "'";
 		$db->sql_query($sql);
 		
-		redirect($redirect, 'User permissions changed');
+		redirect($redirect, 'USER_PERMISSIONS_CHANGED');
 	}
 	
 	function approve()
@@ -84,7 +84,7 @@ class user_list
 		
 		if($userid == 0)
 		{
-			trigger_error("Input invalid");
+			trigger_error("INPUT_INVALID");
 		}
 		
 		$sql = "SELECT * 
@@ -95,12 +95,12 @@ class user_list
 		
 		if(empty($view_user))
 		{
-			trigger_error('user does not exist');
+			trigger_error('USER_NOT_FOUND');
 		}
 		
 		if($userid == $user->uid)
 		{
-			trigger_error('can\'t demote yourself');
+			trigger_error('NO_DEMOTE');
 		}
 		
 		$approval_setting = ($view_user['user_approved'] == 0) ? 1 : 0;
@@ -110,7 +110,7 @@ class user_list
 			WHERE user_id = '" . $db->sql_escape($userid) . "'";
 		$db->sql_query($sql);
 		
-		redirect($redirect, 'User approved changed');
+		redirect($redirect, 'USER_PERMISSIONS_CHANGED');
 	}
 	
 	function delete()
@@ -122,7 +122,7 @@ class user_list
 		
 		if($userid == 0)
 		{
-			trigger_error("Input invalid");
+			trigger_error("INPUT_INVALID");
 		}
 		
 		$sql = "SELECT * 
@@ -133,18 +133,18 @@ class user_list
 		
 		if(empty($view_user))
 		{
-			trigger_error('user does not exist');
+			trigger_error('USER_NOT_FOUND');
 		}
 		
 		if($userid == $user->uid)
 		{
-			trigger_error('can\'t delete yourself');
+			trigger_error('NO_DELETE_SELF');
 		}
 		
 		$sql = "DELETE FROM users 
 			WHERE user_id = '" . $db->sql_escape($userid) . "'";
 		$db->sql_query($sql);
 		
-		redirect($redirect, 'User deleted');
+		redirect($redirect, 'USER_DELETED');
 	}
 }

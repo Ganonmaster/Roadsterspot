@@ -58,7 +58,7 @@ class roadster_list
 		
 		if($roadsterid == 0)
 		{
-			trigger_error("Input invalid");
+			trigger_error("INPUT_INVALID");
 		}
 		
 		$sql = "SELECT * 
@@ -69,7 +69,7 @@ class roadster_list
 		
 		if(empty($view_roadster))
 		{
-			trigger_error('user does not exist');
+			trigger_error('ROADSTER_NOT_EXIST');
 		}
 		
 		//Delete spots
@@ -83,6 +83,6 @@ class roadster_list
 		$db->sql_query($sql);
 		
 		
-		redirect($redirect, 'Roadster deleted');
+		redirect($redirect, 'ROADSTER_DELETED');
 	}
 }

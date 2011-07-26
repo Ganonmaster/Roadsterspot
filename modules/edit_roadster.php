@@ -20,7 +20,7 @@ class edit_roadster
 		
 		if($roadster == 0)
 		{
-			trigger_error("Input invalid");
+			trigger_error("INPUT_INVALID");
 		}
 		
 		$sql = "SELECT * 
@@ -31,7 +31,7 @@ class edit_roadster
 		
 		if(empty($view_roadster))
 		{
-			trigger_error('roadster does not exist');
+			trigger_error('ROADSTER_NOT_EXIST');
 		}
 		
 		$template->assign_vars(array(
@@ -59,7 +59,7 @@ class edit_roadster
 		
 		if($roadster == 0)
 		{
-			trigger_error("Input invalid");
+			trigger_error("INPUT_INVALID");
 		}
 		
 		$sql = "SELECT * 
@@ -70,7 +70,7 @@ class edit_roadster
 		
 		if(empty($view_roadster))
 		{
-			trigger_error('roadster does not exist');
+			trigger_error('ROADSTER_NOT_EXIST');
 		}
 
 		$sql = "UPDATE roadster 
