@@ -1,7 +1,22 @@
 <!-- INCLUDE overall_header.html -->
 
 <div id="spot_form">
-	<h1>Roadster : {VIEW_ROADSTER_PLATE}</h1>
+	<h1>Roadster : {VIEW_ROADSTER_PLATE} <!-- IF EDIT_ROADSTER == 1 --><a href="{ROOT_URL}edit_roadster/main/{VIEW_ROADSTER_ID}/" class="right">Aanpassen</a><!-- ENDIF --></h1>
+	<div class="form_field">
+		<label for="color_field">Kleur:</label>
+		<div name="color_field"><!-- IF VIEW_ROADSTER_COLOR == '' -->Geen kleur bekend<!-- ELSE -->{VIEW_ROADSTER_COLOR}<!-- ENDIF --></div>
+		<br class="clear" />
+	</div>
+	<div class="form_field">
+		<label for="type_field">Type:</label>
+		<div name="type_field"><!-- IF VIEW_ROADSTER_TYPE == '' -->Geen type bekend<!-- ELSE -->{VIEW_ROADSTER_TYPE}<!-- ENDIF --></div>
+		<br class="clear" />
+	</div>
+	<div class="form_field">
+		<label for="year_field">Jaar:</label>
+		<div name="year_field"><!-- IF VIEW_ROADSTER_YEAR == '' -->Geen jaar bekend<!-- ELSE -->{VIEW_ROADSTER_YEAR}<!-- ENDIF --></div>
+		<br class="clear" />
+	</div>
 	<!-- IF SHOW_SPOTS -->
 	<p>Deze roadster heeft geen spots.</p>
 	<!-- ELSE -->
@@ -23,6 +38,9 @@
 				<td>{spot_list.SPOT_TIME}</td>
 				<td><a href="{ROOT_URL}view/user/{spot_list.SPOT_USER_ID}/">{spot_list.SPOT_USER}</td>
 				<td><a href="{ROOT_URL}view/delete/spot-{spot_list.SPOT_ID}/view-roadster-{spot_list.SPOT_ROADSTER_ID}/"><img src="{ROOT_URL}styles/default/images/remove.png" alt="Remove" /></a></td>
+			</tr>
+			<tr>
+				<td colspan="5"><!-- IF spot_list.SPOT_COMMENTS != '' -->{spot_list.SPOT_COMMENTS}<!-- ENDIF --></td>
 			</tr>
 			<!-- END spot_list -->
 		</tbody>

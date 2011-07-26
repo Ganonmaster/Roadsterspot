@@ -50,6 +50,7 @@ class home
 		$license_plate_input = (isset($post_data['license_plate_input'])) ? $post_data['license_plate_input'] : ''; //Errorno 1
 		$location_input = (isset($post_data['location_input'])) ? $post_data['location_input'] : ''; //Errorno 2
 		$date_input = (isset($post_data['date_input'])) ? explode('-', $post_data['date_input']) : ''; //Errorno 3
+		$comments_input = (isset($post_data['comments_input'])) ? explode('-', $post_data['comments_input']) : ''; //Errorno 4
 			
 		if(get_licenseplate_sidecode($license_plate_input) == false)
 		{
@@ -102,8 +103,8 @@ class home
 		
 		//Add spot to the database
 		$sql = "INSERT INTO spots 
-			(user_id, roadster_id, spot_coordinates, spot_location_readable, spot_date) 
-			VALUES ('" . $user->uid . "', '" . $roadster_id . "', '" . $db->sql_escape($location_coords) . "', '" . $db->sql_escape($location_readable) . "', '" . $db->sql_escape($timestamp) . "')";
+			(user_id, roadster_id, spot_coordinates, spot_location_readable, spot_date, spot_comments) 
+			VALUES ('" . $user->uid . "', '" . $roadster_id . "', '" . $db->sql_escape($location_coords) . "', '" . $db->sql_escape($location_readable) . "', '" . $db->sql_escape($timestamp) . "', '" . $db->sql_escape($comments_input) . "')";
 		$db->sql_query($sql);
 		
 		return 0;

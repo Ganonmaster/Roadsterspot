@@ -1,0 +1,27 @@
+<!-- INCLUDE overall_header.html -->
+
+<form action="{ROOT_URL}edit_roadster/submit/{VIEW_ROADSTER_ID}/" method="post">
+<div id="spot_form">
+	<h1>Roadster : {VIEW_ROADSTER_PLATE}</h1>
+	<div class="form_field">
+		<label for="color_field">Kleur:</label>
+		<input type="text" name="color_field" value="{VIEW_ROADSTER_COLOR}" />
+		<br class="clear" />
+	</div>
+	<div class="form_field">
+		<label for="type_field">Type:</label>
+		<input type="text" name="type_field" value="{VIEW_ROADSTER_TYPE}" />
+		<br class="clear" />
+	</div>
+	<div class="form_field">
+		<label for="year_field">Jaar:</label>
+		<input type="text" name="year_field" value="{VIEW_ROADSTER_YEAR}" />
+		<br class="clear" />
+	</div>
+	<div class="form_field">
+		<input type="submit" name="submit" value="Submit" />
+		<br class="clear" />
+	</div>
+</div>
+</form>
+<!-- INCLUDE overall_footer.html -->

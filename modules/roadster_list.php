@@ -2,6 +2,15 @@
 
 class roadster_list
 {	
+	function roadster_list()
+	{	
+		global $db, $template, $config, $user;
+		if(($user->logged_in == 0))
+		{
+			redirect('', 'NOT_AUTHORIZED');
+		}
+	}
+
 	function main()
 	{
 		global $db, $template, $config, $user;

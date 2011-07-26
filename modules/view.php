@@ -1,7 +1,16 @@
 <?php
 
 class view
-{	
+{
+	function view()
+	{	
+		global $db, $template, $config, $user;
+		if(($user->logged_in == 0))
+		{
+			redirect('', 'NOT_AUTHORIZED');
+		}
+	}
+	
 	function main()
 	{
 		trigger_error('fap');
@@ -106,6 +115,9 @@ class view
 		$template->assign_vars(array(
 			"VIEW_ROADSTER_PLATE"	=> $view_roadster['roadster_license_plate'],
 			"VIEW_ROADSTER_ID"		=> $view_roadster['roadster_id'],
+			"VIEW_ROADSTER_COLOR"	=> $view_roadster['roadster_color'],
+			"VIEW_ROADSTER_TYPE"	=> $view_roadster['roadster_type'],
+			"VIEW_ROADSTER_YEAR"	=> $view_roadster['roadster_year'],
 		));
 		
 		$sql = "SELECT s.*, u.*, r.*
@@ -120,12 +132,20 @@ class view
 			"SHOW_SPOTS"	=> (empty($spots)) ? 1 : 0,
 		));
 
+		if($user->userdata['user_admin'] == 1)
+		{
+			$template->assign_vars(array(
+				"EDIT_ROADSTER"		=> 1,
+			));
+		}
+		
 		if(!empty($spots))
 		{
 			foreach($spots as $spot)
 			{
 				$template->assign_block_vars('spot_list', array(
 					"SPOT_ID"					=> $spot['spot_id'],
+					"SPOT_COMMENTS"				=> $spot['spot_comments'],
 					"SPOT_ROADSTER_PLATE"		=> $spot['roadster_license_plate'],
 					"SPOT_ROADSTER_ID"			=> $spot['roadster_id'],
 					"SPOT_USER_ID"				=> $spot['user_id'],
