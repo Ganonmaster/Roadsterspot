@@ -356,18 +356,15 @@ function seed_password($seed, $password)
 function redirect($page, $message)
 {
 	$page = str_replace('-', '/', $page);
+	
 
-	header('Refresh: 2; url=' . ROOT_URL . $page);
+	header('Refresh: 2; url=' . ROOT_URL . $page . '/');
 	trigger_error($message, E_USER_NOTICE);
 }
 
 function page_header()
 {
 	global $db, $template, $subdir, $user;
-	
-	$root_url = 'http://' . $_SERVER['HTTP_HOST'] . $subdir;
-	
-	define('ROOT_URL', $root_url);
 	
 	$template->assign_vars(array(
 		'ROOT_URL'		=> ROOT_URL,

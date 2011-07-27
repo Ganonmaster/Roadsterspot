@@ -1,8 +1,8 @@
 <?php
 
 $lang_error = array(
-	"SPOT_SUCCESS"		=> 'Succes!',
-	"SPOT_DESC"			=> 'Je spot is geregistreerd in de database',
+	"SPOT_SUCCESS_TITLE"		=> 'Succes!',
+	"SPOT_SUCCESS_DESC"			=> 'Je spot is geregistreerd in de database',
 	
 	"ERROR_SPOT_LICENSE_PLATE_TITLE"	=> 'Geen nummerbord',
 	"ERROR_SPOT_LICENSE_PLATE_DESC"		=> 'Je hebt een incorrect nummberbord ingevoerd.',
@@ -55,7 +55,7 @@ $lang_error = array(
 	"NO_SUCH_SPOT_TITLE"		=> 'Spot niet gevonden.',
 	"NO_SUCH_SPOT_DESC"			=> 'De spot die je zocht was niet gevonden in de database.',
 	
-	"ROADSTER_UPDATED_TITLe"			=> 'Roadster geupdate',
+	"ROADSTER_UPDATED_TITLE"			=> 'Roadster geupdate',
 	"ROADSTER_UPDATED_DESC"		=> 'Roadster is succesvol geupdate.',
 	
 	//Authentication

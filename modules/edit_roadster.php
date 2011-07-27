@@ -78,6 +78,6 @@ class edit_roadster
 			WHERE roadster_id = '" . $db->sql_escape($roadster) . "'";
 		$db->sql_query($sql);
 		
-		redirect('view/roadster/' . $roadster , 'ROADSTER_UPDATED');
+		redirect('view/roadster/' . $roadster . '/' , 'ROADSTER_UPDATED');
 	}
 }

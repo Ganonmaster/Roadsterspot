@@ -50,8 +50,9 @@ class home
 		$license_plate_input = (isset($post_data['license_plate_input'])) ? $post_data['license_plate_input'] : ''; //Errorno 1
 		$location_input = (isset($post_data['location_input'])) ? $post_data['location_input'] : ''; //Errorno 2
 		$date_input = (isset($post_data['date_input'])) ? explode('-', $post_data['date_input']) : ''; //Errorno 3
-		$comments_input = (isset($post_data['comments_input'])) ? explode('-', $post_data['comments_input']) : ''; //Errorno 4
-			
+		$comments_input = (isset($post_data['comments_input'])) ? $post_data['comments_input'] : 'Geen comment'; //Errorno 4
+		$upload_input = (isset($_FILES['photoupload'])) ? $_FILES['photoupload'] : '';
+		
 		if(get_licenseplate_sidecode($license_plate_input) == false)
 		{
 			return 1;
@@ -79,6 +80,22 @@ class home
 			return 3;
 		}
 		
+		$uploadname = '';
+		
+		if(!empty($upload_input))
+		{
+		
+			if(!move_uploaded_file($_FILES['photoupload']['tmp_name'], 
+			'/home/smartiechick/public_html/roadsterspot/uploads/spots/' . $_FILES['photoupload']['name']))
+			{
+				return 4;
+			}
+			else
+			{
+				$uploadname = $_FILES['photoupload']['name'];
+			}
+		}
+		
         $roadster_id = 0;
         
         $sql = "SELECT * 
@@ -103,8 +120,14 @@ class home
 		
 		//Add spot to the database
 		$sql = "INSERT INTO spots 
-			(user_id, roadster_id, spot_coordinates, spot_location_readable, spot_date, spot_comments) 
-			VALUES ('" . $user->uid . "', '" . $roadster_id . "', '" . $db->sql_escape($location_coords) . "', '" . $db->sql_escape($location_readable) . "', '" . $db->sql_escape($timestamp) . "', '" . $db->sql_escape($comments_input) . "')";
+			(user_id, roadster_id, spot_coordinates, spot_location_readable, spot_date, spot_comments, spot_photo) 
+			VALUES ('" . $user->uid . "',
+			'" . $roadster_id . "', 
+			'" . $db->sql_escape($location_coords) . "', 
+			'" . $db->sql_escape($location_readable) . "', 
+			'" . $db->sql_escape($timestamp) . "', 
+			'" . $db->sql_escape($comments_input) . "', 
+			'" . $db->sql_escape($uploadname) . "')";
 		$db->sql_query($sql);
 		
 		return 0;
