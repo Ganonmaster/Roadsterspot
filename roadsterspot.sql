@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `spots` (
   `spot_location_readable` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `spot_date` int(255) NOT NULL,
   `spot_comments` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `spot_photo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`spot_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
