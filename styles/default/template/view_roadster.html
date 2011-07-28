@@ -3,7 +3,7 @@
 <div id="spot_form">
 	<h1>Roadster : {VIEW_ROADSTER_PLATE} <!-- IF EDIT_ROADSTER == 1 --><a href="{ROOT_URL}edit_roadster/main/{VIEW_ROADSTER_ID}/" class="right">Aanpassen</a><!-- ENDIF --></h1>
 	<div class="right">
-		<!-- IF VIEW_ROADSTER_PHOTO != '' --> <img src="{ROOT_URL}uploads/spots/{VIEW_ROADSTER_PHOTO}" alt="" /><!-- ENDIF -->
+		<!-- IF VIEW_ROADSTER_PHOTO != '' --><img src="{ROOT_URL}uploads/thumb.php?file=spots/{VIEW_ROADSTER_PHOTO}" alt="" /><!-- ENDIF -->
 	</div>
 	<div class="form_field">
 		<label for="color_field">Kleur:</label>
@@ -44,7 +44,7 @@
 			</tr>
 			<tr>
 				<td <!-- IF spot_list.SPOT_PHOTO != '' -->colspan="3"<!-- ELSE -->colspan="5"<!-- ENDIF -->><!-- IF spot_list.SPOT_COMMENTS != '' -->{spot_list.SPOT_COMMENTS}<!-- ELSE -->Geen bijzonderheden gemeld.<!-- ENDIF --></td>
-				<!-- IF spot_list.SPOT_PHOTO != '' --><td <!-- IF spot_list.SPOT_COMMENTS != '' -->colspan="2"<!-- ELSE -->colspan="5"<!-- ENDIF -->><img src="{ROOT_URL}uploads/spots/{spot_list.SPOT_PHOTO}" alt="{spot_list.SPOT_COMMENTS}" /></td><!-- ENDIF -->
+				<!-- IF spot_list.SPOT_PHOTO != '' --><td <!-- IF spot_list.SPOT_COMMENTS != '' -->colspan="2"<!-- ELSE -->colspan="5"<!-- ENDIF -->><img src="{ROOT_URL}uploads/thumb.php?file=spots/{spot_list.SPOT_PHOTO}" alt="{spot_list.SPOT_COMMENTS}" /></td><!-- ENDIF -->
 			</tr>
 			<!-- END spot_list -->
 		</tbody>
