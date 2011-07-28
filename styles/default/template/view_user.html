@@ -31,6 +31,10 @@
 				<td><a href="{ROOT_URL}view/user/{spot_list.SPOT_USER_ID}/">{spot_list.SPOT_USER}</td>
 				<td><a href="{ROOT_URL}view/delete/spot-{spot_list.SPOT_ID}/view-user-{VIEW_PROFILE_USER_ID}/"><img src="{ROOT_URL}styles/default/images/remove.png" /></a></td>
 			</tr>
+			<tr>
+				<td <!-- IF spot_list.SPOT_PHOTO != '' -->colspan="3"<!-- ELSE -->colspan="5"<!-- ENDIF -->><!-- IF spot_list.SPOT_COMMENTS != '' -->{spot_list.SPOT_COMMENTS}<!-- ELSE -->Geen bijzonderheden gemeld.<!-- ENDIF --></td>
+				<!-- IF spot_list.SPOT_PHOTO != '' --><td <!-- IF spot_list.SPOT_COMMENTS != '' -->colspan="2"<!-- ELSE -->colspan="5"<!-- ENDIF -->><img src="{ROOT_URL}uploads/spots/{spot_list.SPOT_PHOTO}" alt="{spot_list.SPOT_COMMENTS}" /></td><!-- ENDIF -->
+			</tr>
 			<!-- END spot_list -->
 		</tbody>
 	</table>

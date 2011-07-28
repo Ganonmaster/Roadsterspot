@@ -75,12 +75,14 @@ class view
 			{
 				$template->assign_block_vars('spot_list', array(
 					"SPOT_ID"					=> $spot['spot_id'],
+					"SPOT_COMMENTS"				=> htmlspecialchars($spot['spot_comments']),
 					"SPOT_ROADSTER_PLATE"		=> $spot['roadster_license_plate'],
 					"SPOT_ROADSTER_ID"			=> $spot['roadster_id'],
 					"SPOT_USER_ID"				=> $spot['user_id'],
 					"SPOT_USER"					=> $spot['user_name'],
 					"SPOT_LOCATION"				=> $spot['spot_location_readable'],
-					"SPOT_TIME"					=> date('l jS \of F Y h:i:s A', $spot['spot_date']),
+					"SPOT_TIME"					=> date('l jS \of F Y ', $spot['spot_date']),
+					"SPOT_PHOTO"				=> (isset($spot['spot_photo'])) ? $spot['spot_photo'] : '',
 				));
 			}
 		}
@@ -139,22 +141,34 @@ class view
 			));
 		}
 		
+		$most_recent_photo = '';
+		
 		if(!empty($spots))
 		{
 			foreach($spots as $spot)
 			{
+				if((!empty($spot['spot_photo'])) && (empty($most_recent_photo)))
+				{
+					$most_recent_photo = $spot['spot_photo'];
+				}
+			
 				$template->assign_block_vars('spot_list', array(
 					"SPOT_ID"					=> $spot['spot_id'],
-					"SPOT_COMMENTS"				=> $spot['spot_comments'],
+					"SPOT_COMMENTS"				=> htmlspecialchars($spot['spot_comments']),
 					"SPOT_ROADSTER_PLATE"		=> $spot['roadster_license_plate'],
 					"SPOT_ROADSTER_ID"			=> $spot['roadster_id'],
 					"SPOT_USER_ID"				=> $spot['user_id'],
 					"SPOT_USER"					=> $spot['user_name'],
 					"SPOT_LOCATION"				=> $spot['spot_location_readable'],
 					"SPOT_TIME"					=> date('l jS \of F Y ', $spot['spot_date']),
+					"SPOT_PHOTO"				=> (isset($spot['spot_photo'])) ? $spot['spot_photo'] : '',
 				));
 			}
 		}
+		
+		$template->assign_vars(array(
+			"VIEW_ROADSTER_PHOTO"	=> $most_recent_photo,
+		));
 		
 		$template->set_filenames(array(
 			'body'	=> 'view_roadster.html',
