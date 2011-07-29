@@ -11,21 +11,21 @@
 	<title>roadsterSpot</title>
 	<meta name="description" content="Smart Roadster Spotter">
 	<meta name="author" content="Hidde Jansen">
-	<!-- Just so you know, I don't like this pink colour was not my choice.
+	<!-- Just so you know, I don't like this pink colour; it was not my choice.
 		It is revolting, I know. Don't judge me, I tried to make something 
 		pretty with the materials given. 
 		-Hidde Jansen
 	-->
-	
+	<!-- IF IS_MOBILE == true -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{ROOT_URL}styles/default/css/mobile.css?v=2">
+	<!-- ELSE -->
+	<link rel="stylesheet" href="{ROOT_URL}styles/default/css/style.css?v=2">
+	<link href='http://fonts.googleapis.com/css?family=Cabin:regular,regularitalic,500,500italic,600,600italic,bold,bolditalic&v1' rel='stylesheet' type='text/css'>
+	<!-- ENDIF -->
 	
 	<link rel="shortcut icon" href="{ROOT_URL}favicon.ico">
 	<link rel="apple-touch-icon" href="{ROOT_URL}apple-touch-icon.png">
-	<link rel="stylesheet" href="{ROOT_URL}styles/default/css/style.css?v=2">
-	<link href='http://fonts.googleapis.com/css?family=Lekton:regular,italic,bold&v1' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Amaranth:regular,regularitalic,bold,bolditalic&v1' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Cabin:regular,regularitalic,500,500italic,600,600italic,bold,bolditalic&v1' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Bangers&v1' rel='stylesheet' type='text/css'>
 	<script src="{ROOT_URL}js/libs/modernizr-1.7.min.js"></script>
 	<script type="text/javascript">
 		//Some geolocation code
@@ -48,7 +48,10 @@
   			var longitude = position.coords.longitude;
 			
 			// Set the location in the input field
-			document.getElementById("location_input").value = latitude + ',' + longitude;
+			if(document.getElementById("location_input") != null)
+			{
+				document.getElementById("location_input").value = latitude + ',' + longitude;
+			}
 		}
 		
 		function handle_location_error(err)
@@ -56,22 +59,18 @@
 			if (err.code == 1)
 			{
   				// user said no!
-				alert('Can\'t let you do that...');
   		  	}
 			else if (err.code == 2)
 			{
   				// Unavailable
-				alert('Location currently unavailable');
   		  	}
 			else if (err.code == 3)
 			{
   				// Unavailable
-				alert('Location currently unavailable. (Timeout)');
   		  	}
 			else
 			{
 				//Idunno something went wrong
-				alert('YOU BROKE IT');
 			}
 		}
 		
@@ -91,23 +90,23 @@
 		<!-- IF LOGGED_IN == 0 -->
 			<div class="form_field">
 				<h3 class="left" id="loginheading">Login</h3>
-				<a href="{ROOT_URL}signup/" class="right">Registreer</a>
+				<a href="{ROOT_URL}signup/" class="right" id="signup_url">Registreer</a>
 				<br class="clear"/>
 			</div>
 			<form action="{ROOT_URL}login/" method="post">
 				<div class="form_field">
-					<label for="username_login_input">Gebruikersnaam:</label>
-					<input type="text" name="username_login_input" id="username_login_input" value="" />
+					<label for="username_login_input" class="left">Gebruikersnaam:</label>
+					<input type="text" name="username_login_input" id="username_login_input" class="right" value="" />
 					<br class="clear" />
 				</div>
 				<div class="form_field">
-					<label for="password_login_input">Wachtwoord:</label>
-					<input type="password" name="password_login_input" id="password_login_input" value="" />
+					<label for="password_login_input" class="left">Wachtwoord:</label>
+					<input type="password" name="password_login_input" id="password_login_input" class="right" value="" />
 					<br class="clear" />
 				</div>
 			
 				<div class="form_field">
-					<input type="submit" name="submit" value="submit" class="input" />
+					<input type="submit" name="submit" value="Log in" class="input" class="right" id="login_button"/>
 					<br class="clear" />
 				</div>	
 			</form>

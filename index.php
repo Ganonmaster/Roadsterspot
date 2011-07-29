@@ -11,6 +11,7 @@ require('./lib/dbal/' . $dbms . '.php');
 
 //Reroute all errors to our sexy error handler
 set_error_handler('msg_handler');
+define('MOBILE_BROWSER', detect_mobile_browser());
 
 $db = new $sql_db();
 $db->sql_connect($dbserv, $dbuser, $dbpass, $dbname, $dbport);
@@ -20,6 +21,10 @@ $config = new config();
 $config->get_config();
 $user = new user();
 page_header();
+
+$template->assign_vars(array(
+	"IS_MOBILE"	=> MOBILE_BROWSER,
+));
 
 $module = (isset($_REQUEST['module'])) ? $_REQUEST['module'] : 'home';
 $method = (isset($_REQUEST['method'])) ? $_REQUEST['method'] : 'main';

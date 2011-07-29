@@ -7,7 +7,7 @@ $dbpass = 'root';
 $dbname = 'roadsterspot';
 $dbport = false;
 
-$subdir = '/roadsterspot/';
+$subdir = '/';
 
 $root_url = 'http://' . $_SERVER['HTTP_HOST'] . $subdir;
 define('ROOT_URL', $root_url);
